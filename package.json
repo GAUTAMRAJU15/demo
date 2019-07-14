@@ -37,10 +37,6 @@
     "lint:eslint:fix": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts --fix",
     "lint:js": "npm run lint:eslint -- . ",
     "lint:staged": "lint-staged",
-    "pretest": "npm run test:clean && npm run lint",
-    "test:clean": "rimraf ./coverage",
-    "test": "cross-env NODE_ENV=test jest --coverage",
-    "test:watch": "cross-env NODE_ENV=test jest --watchAll",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "prettify": "prettier --write"
   },
@@ -49,17 +45,6 @@
     "> 1%",
     "IE 10"
   ],
-  "lint-staged": {
-    "*.js": [
-      "npm run lint:eslint:fix",
-      "git add --force"
-    ],
-    "*.json": [
-      "prettier --write",
-      "git add --force"
-    ]
-  },
-  "pre-commit": "lint:staged",
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
   },
@@ -70,6 +55,7 @@
     "connected-react-router": "6.4.0",
     "cross-env": "5.2.0",
     "express": "4.16.4",
+    "firebase": "^6.3.0",
     "fontfaceobserver": "2.1.0",
     "history": "4.9.0",
     "hoist-non-react-statics": "3.3.0",
@@ -79,7 +65,9 @@
     "ip": "1.1.5",
     "lodash": "4.17.11",
     "minimist": "1.2.0",
+    "node-sass": "^4.12.0",
     "prop-types": "15.7.2",
+    "random-words": "^1.1.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-helmet": "6.0.0-beta",
@@ -90,6 +78,7 @@
     "redux-saga": "1.0.2",
     "reselect": "4.0.0",
     "sanitize.css": "8.0.0",
+    "sass-loader": "^7.1.0",
     "styled-components": "4.2.0"
   },
   "devDependencies": {

@@ -1,0 +1,47 @@
+RANDOM HTML Q:
+
+<div>
+<p></p>
+<h1></h1>
+<h2></h2>
+<h6></h6>
+<div></div>
+<img/>
+<a>
+<ol>
+<ul>
+</div>
+
+var supportedTags = ['div','p','span','h1','h2','h3','h4','h5','h6','img','ul','ol'];
+
+var nestingRules = {
+    'div': {[]},
+    'p': {['a', 'b', 'i', 'img']},
+    ....
+}
+
+
+function generateRandomHTML(numTags = 3, nestingDepth = 1){
+    var top = document.createElement('div');
+
+    pick numTags children uniquely
+
+    if (nestingDepth == 2)
+    go through all and add one more level
+
+    each time you add a tag, populate its attributes
+
+    do it on the DOM
+    at the end you'll stringify it by doing top.innerHtml
+    AND, this way you can traverse the DOM to randomly pick the tag, attribute, and value you want to ask about
+}
+
+TABLE HTML Q:
+<table>
+<th>
+<td> x n
+</th>
+(<tr> (<td> x n) ) x k
+</table>
+
+FORM HTML Q:

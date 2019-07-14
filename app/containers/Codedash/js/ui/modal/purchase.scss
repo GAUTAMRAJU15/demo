@@ -1,0 +1,114 @@
+.myPurchaseModal {
+    position: relative;
+    z-index: 999;
+
+
+    .purchase {
+        // position: relative;
+
+        
+        &.show-purchase {
+            position: absolute !important;
+            width: 630px;
+            height: 300px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+            background-color: #ffffff;
+            margin: 100px 0 0 100px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+            top: 200px;
+            left: 38%;
+            margin-top: 40px;
+            transform: translate(-50%, -50%);
+            max-height: 300px;
+          }
+        
+          &.hide-purchase {
+            display: none !important;
+            z-index:  0;     
+            position: relative !important;
+          }
+
+          .purchase-message {
+              background: #f3f3f3;
+            > div {
+                margin: 0 auto;
+                width: 310px;
+                font-size: 30px;
+                padding: 10px;
+                color: #1f2a55;
+                font-weight: 600;
+            }
+          }
+
+          .purchase-body {
+            margin: 0 auto;
+            width: 300px;
+            text-align: center;
+
+            & .current-coin {
+                display: flex;
+                position: relative;
+                top: 40px;
+                margin-bottom: 50px;
+                justify-content: center;
+                font-size: 14px;
+                font-weight: 500;
+                color: #1f2a55;
+                & .text {
+                    margin-right: 10px;
+                    + img {
+                        position: relative;
+                        top: -1px;
+                    }
+                }
+                & .coin_value {
+                    color: #f1bd19;
+                    font-weight: 600;
+                }
+            }
+
+            .purchase-btn, .endgame {
+                width: 300px;
+                display: flex;
+                font-size: 15px;
+                text-transform: uppercase;
+                padding-left: 40px;
+                background: #358ffb;
+                outline: none;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                font-size: 12px;
+                font-weight: 500;
+                letter-spacing: 0.37px;
+                font-family: Montserrat;
+                position: relative;
+                cursor: pointer;
+                top: 10px;
+                height: 45px;
+                margin-bottom: 10px;
+                .btn-1 {
+                    margin-right: 10px;
+                }
+                .to_buy{
+                    color: #f1bd19;
+                }
+            }
+            .endgame {
+                background: #fff !important;
+                border: 1px solid #358ffb;
+                color: #358ffb;
+                text-align: center;
+                top: 20px !important; 
+                padding-left: 10px;
+                > div {
+                    width : 100px;
+                    margin: 0 auto;
+                }
+            }
+          }
+    }  
+  }
