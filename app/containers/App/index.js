@@ -15,7 +15,7 @@ import { Switch, Route } from 'react-router-dom';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
-import Codedash from 'containers/Codedash/js/ui/App';
+import Codedash from 'containers/Codedash';
 import GlobalStyle from '../../global-styles';
 
 const AppWrapper = styled.div`
@@ -31,8 +31,8 @@ export default function App() {
   return (
     <AppWrapper>
       <Helmet
-        titleTemplate="%s - React.js Boilerplate"
-        defaultTitle="React.js Boilerplate"
+        titleTemplate="%s - code dash"
+        defaultTitle="codedash"
       >
         <meta name="description" content="A React.js Boilerplate application" />
       </Helmet>

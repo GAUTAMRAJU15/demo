@@ -436,7 +436,7 @@ function gameOver(i, game, isDead, arrayIndices) {
       playScene.deletingLife = false;
 
       if (playScene.chances === 0) {
-          showPurchaseModal(p => {
+        showPurchaseModal(p => {
           if (p == 1) {
             playScene.askingQuestion = true;
             console.log('resumin game');
