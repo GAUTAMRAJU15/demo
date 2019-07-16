@@ -56,6 +56,7 @@ export default class PlayGame extends Phaser.Scene {
   // loads the scene with initial data
   init(data) {
     this.coins = data.data.coins || 0;
+    this.currentCoin = data.data.coins || 0;
     this.name = data.data.name;
     this.index = 0;
     this.id = data.data.id;
@@ -79,6 +80,7 @@ export default class PlayGame extends Phaser.Scene {
     this.fromGameOver = data.data.fromGameOver || 'true';
     this.initialise = data.data.initialise;
     this.isPurchased = 0;
+    this.gain = 0;
   }
 
   // preloads the content before game assets placement
@@ -194,6 +196,7 @@ export default class PlayGame extends Phaser.Scene {
       this.coinGroup.remove(coin);
       this.coins += bonus;
       this.currentGain += bonus;
+      this.gain += bonus;
       this.scoreText.setText(this.coins);
       this.starmusic.play();
     }
@@ -706,6 +709,7 @@ export default class PlayGame extends Phaser.Scene {
   }
 
   update() {
+    console.log(this.currentCoin, this.currentGain, this.coins);
     if (this.askingQuestion || this.fallOver) {
       this.mountainsBack.tilePositionX += 0;
       this.mountainsMid.tilePositionX += 0;
@@ -741,18 +745,29 @@ export default class PlayGame extends Phaser.Scene {
     let minDistance = game.config.width;
     let rightmostPlatformHeight = 0;
 
-    this.platformGroup.getChildren().forEach(function(platform) {
-      const platformDistance =
-        game.config.width - platform.x - platform.displayWidth / 2;
-      if (platformDistance < minDistance) {
-        minDistance = platformDistance;
-        rightmostPlatformHeight = platform.y;
-      }
-      if (platform.x < -platform.displayWidth / 2) {
-        this.platformGroup.killAndHide(platform);
-        this.platformGroup.remove(platform);
-      }
-    }, this);
+    try {
+      this.platformGroup.getChildren().forEach(function(platform) {
+        const platformDistance =
+          game.config.width - platform.x - platform.displayWidth / 2;
+        if (platformDistance < minDistance) {
+          minDistance = platformDistance;
+          rightmostPlatformHeight = platform.y;
+        }
+        if (platform.x < -platform.displayWidth / 2) {
+          this.platformGroup.killAndHide(platform);
+          this.platformGroup.remove(platform);
+        }
+      }, this);
+    } catch (err) {
+      game.scene.start('GameOver', {
+        coins: this.coins,
+        currentCoin: this.currentCoin,
+        currentGain: this.currentGain,
+        gain: this.gain,
+        text: 'YOU DIED, GAME OVER',
+        initialise: this.initialise,
+      });
+    }
 
     this.coinGroup.getChildren().forEach(function(coin) {
       if (coin.x < -coin.displayWidth / 2) {

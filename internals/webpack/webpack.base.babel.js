@@ -59,13 +59,13 @@ module.exports = options => ({
         ],
       },
       // {
-      //   test: /\.(jpg|png|gif)$/,
+      //   test: /\.(jp(e)g|png|gif)$/,
       //   use: [
       //     {
       //       loader: 'url-loader',
       //       options: {
       //         // Inline files smaller than 10 kB
-      //         limit: 10 * 1024,
+      //         limit: 1 * 1024,
       //       },
       //     },
       //     {

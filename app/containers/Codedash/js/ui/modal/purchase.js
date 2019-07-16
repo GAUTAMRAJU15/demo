@@ -18,7 +18,7 @@ class Purchase extends React.Component {
               <img src={coinImg} width="22" height="22" />
               <div className="coin_value" />
             </div>
-            <button className="purchase-btn" onClick={() => dontEndGame()}>
+            <button type="button" id="purchase_me" className="purchase-btn" onClick={() => dontEndGame()}>
               <div className="btn-1">Buy and extra life for </div>
               <img src={coinImg} width="20" height="20" />
               <div className="to_buy">100</div>

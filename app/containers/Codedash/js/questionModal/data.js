@@ -28,9 +28,18 @@ const css = () => {
 };
 
 const showPurchaseModal = callback => {
+  const playScene = game.scene.getScene("PlayGame");
   document.querySelector('#game').classList.add('modalway');
-
-  const playScene = game.scene.getScene('PlayGame');
+  if(playScene.coins < 100) {
+    document.getElementById("purchase_me").disabled = true;
+    document.getElementById("purchase_me").style.pointerEvents = "none";
+    document.getElementById("purchase_me").style.opacity = 0.5;
+  }
+  else {
+    document.getElementById("purchase_me").disabled = false;
+    document.getElementById("purchase_me").style.pointerEvents = "auto";
+    document.getElementById("purchase_me").style.opacity =1;
+  }
   playScene.cursors.isDown = false;
   playScene.player.setVelocityY(0);
   game.scene.pause('PlayGame');
@@ -80,6 +89,7 @@ const coinData = async bonus => {
 };
 
 const dontEndGame = () => {
+  console.log("inside dont end game")
   const playScene = game.scene.getScene('PlayGame');
   playScene.isPurchased = 1;
   playScene.coins -= 100;
@@ -302,6 +312,7 @@ const unlockHint = async () => {
     if (coin < 0) {
       playScene.coins = 0;
       playScene.currentGain = 0;
+
     } else {
       playScene.coins = coin;
       playScene.currentGain = cGain;
@@ -425,7 +436,7 @@ function gameOver(i, game, isDead, arrayIndices) {
       playScene.deletingLife = false;
 
       if (playScene.chances === 0) {
-        const p = showPurchaseModal(p => {
+          showPurchaseModal(p => {
           if (p == 1) {
             playScene.askingQuestion = true;
             console.log('resumin game');
@@ -452,29 +463,16 @@ async function overGame() {
   document.querySelector('.modal-dialog').classList.add('hideModal');
   clearInterval(qInterval);
   clearTimeout(qTimeout);
-  const minuteUsed = playScene.minute;
-  const secondUsed = playScene.seconds;
-  const convertToSeconds = playScene.minute > 0 ? Number(minuteUsed) * 60 : 0;
-  const totalSecondsUsed = Number(secondUsed) + convertToSeconds;
 
-  const userRef = stuRef.ref;
-  let totalSecondsFetched = null;
-
-  await userRef.child(playScene.id).once('value', snapshot => {
-    totalSecondsFetched = snapshot.val().totalSecondsUsed;
-  });
-
-  totalSecondsFetched < totalSecondsUsed
-    ? await userRef.child(playScene.id).ref.update({
-        totalSecondsUsed,
-      })
-    : null;
   playScene.music.stop();
   game.scene.stop('PlayGame');
   playScene.initialise('GameOver');
+  console.log(playScene.gain)
   game.scene.start('GameOver', {
     coins: playScene.coins,
+    currentCoin: playScene.currentCoin,
     currentGain: playScene.currentGain,
+    gain: playScene.gain,
     text: 'YOU DIED, GAME OVER',
     initialise: playScene.initialise,
   });
@@ -482,6 +480,9 @@ async function overGame() {
 
 const answerIsTrue = async (playScene, coins, currentGain) => {
   const bonus = playScene.bonus1;
+  playScene.gain = currentGain +  bonus; 
+  console.log(playScene.gain);
+
   if (playScene.coins >= 0) {
     playScene.coins = coins + bonus;
     playScene.currentGain = currentGain + bonus;
@@ -499,6 +500,9 @@ const answerIsTrue = async (playScene, coins, currentGain) => {
 };
 
 const answerIsFalse = async (playScene, coins, currentGain) => {
+  playScene.gain = currentGain - 10; 
+  console.log(playScene.gain);
+
   if (playScene.coins > 0) {
     const bonus = -10;
     const coin = coins + bonus;
@@ -576,6 +580,7 @@ function submit() {
     document.querySelector('.modal-info').style.display = 'block';
   }
 }
+
 
 export {
   coinData,

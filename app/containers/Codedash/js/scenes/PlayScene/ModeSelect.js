@@ -33,6 +33,8 @@ export default class ModeSelectScene extends Phaser.Scene {
 
   preload() {
     this.load.image('sky', Sky);
+    console.log(this.coins,"////");
+
   }
 
   callme(e) {
