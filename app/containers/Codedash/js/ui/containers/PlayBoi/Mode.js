@@ -1,11 +1,10 @@
 import React from 'react';
 import firebase from 'firebase/app';
 import { startGame, selectMode } from '../../../firebase/firebase';
-import logo from '../../../../assets/images/logo.png';
 
 // import {screenAdjust,setGameScreenState} from "../../../invader";
 import 'firebase/database';
-import './mode.scss';
+// import './mode.scss';
 
 let stuRef = null;
 
@@ -38,27 +37,7 @@ class Mode extends React.Component {
   };
 
   render() {
-    return (
-      <div className="gamestart-modal">
-        <div className="gamestart-body">
-          <img className="logo_img" src={logo} width="600" height="250" />
-          <div className="lang-text"> Choose your programming language</div>
-          <select
-            className="select_mode_1"
-            value={this.state.value}
-            onChange={this.selectOption}
-          >
-            <option value="true" disabled="disabled">
-              Choose a language
-            </option>
-            <option value="javascript">JavaScript</option>
-            <option value="html">HTML5</option>
-            <option value="css">CSS</option>
-          </select>
-          <div className="gamestart-btn">Press 'Space bar' to start</div>
-        </div>
-      </div>
-    );
+    return null;
   }
 }
 

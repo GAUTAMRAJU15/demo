@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 import { MODE_SCENE_KEY } from '../../constants/sceneKeys';
 import { game } from '../../invader';
 // import Phaser from "phaser";
@@ -33,8 +34,7 @@ export default class ModeSelectScene extends Phaser.Scene {
 
   preload() {
     this.load.image('sky', Sky);
-    console.log(this.coins,"////");
-
+    console.log(this.coins, '////');
   }
 
   callme(e) {
@@ -65,5 +65,57 @@ export default class ModeSelectScene extends Phaser.Scene {
     const gameStart = document.querySelector('.gamestart-modal');
     gameStart.style.display = 'block';
     document.querySelector('body').addEventListener('keyup', this.callme);
+    let fullscreenElement =
+      document.fullscreenElement ||
+      document.mozFullScreenElement ||
+      document.webkitFullscreenElement;
+    let fullscreenEnabled =
+      document.fullscreenEnabled ||
+      document.mozFullScreenEnabled ||
+      document.webkitFullscreenEnabled;
+
+    this.input.keyboard.on(
+      'keydown_SHIFT',
+      function() {
+        // Find the right method, call on correct element
+        fullscreenElement = null;
+        fullscreenEnabled = null;
+        function launchIntoFullscreen(element) {
+          if (element.requestFullscreen) {
+            element.requestFullscreen();
+          } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+          } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+          } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+          }
+        }
+
+        const mod = document.querySelector('.showModal');
+        const purchase = document.querySelector('.show-purchase');
+
+        if (mod) {
+          mod.style.setProperty('position', 'fixed', 'important');
+          mod.style.width = '710px';
+          mod.style.height = '450px';
+          mod.style.top = '70%';
+          mod.style.left = '50%';
+          mod.style.marginTop = '-100px';
+          mod.style.marginLeft = '-10px';
+          mod.style.maxHeight = 'none';
+        }
+
+        if (purchase) {
+          purchase.style.top = '400px';
+          purchase.style.left = '44%';
+        }
+
+        if (!(fullscreenElement && fullscreenEnabled)) {
+          launchIntoFullscreen(document.getElementById('game'));
+        }
+      },
+      this,
+    );
   }
 }
