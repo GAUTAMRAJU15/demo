@@ -23,14 +23,13 @@ export default class GameOverScene extends Phaser.Scene {
     this.unlockHintCounter = 0;
     this.initialise = data.initialise;
     const playScene = game.scene.getScene('PlayGame');
+    console.log('playScene', playScene, game.scene.scenes.playGame);
     playScene.music.stop();
-    if(playScene.currentCoin + playScene.gain >= 0) {
+    if (playScene.currentCoin + playScene.gain >= 0) {
       coinData(playScene.gain);
-    }
-    else {
+    } else {
       coinData(-this.data.currentCoin);
     }
-
   }
 
   preload() {
@@ -70,7 +69,7 @@ export default class GameOverScene extends Phaser.Scene {
 
     btn.addEventListener('click', () => {
       game.scene.stop('GameOver');
-      document.querySelector(".modal-info-life").style.display = "none";
+      document.querySelector('.modal-info-life').style.display = 'none';
       const hintModal = document.querySelector('.modal-hint');
       hintModal.classList.add('hide-hint');
       playScene.music.stop();

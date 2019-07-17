@@ -6,29 +6,27 @@ import Over from './containers/GameOver/GameOver';
 import Play from './containers/PlayBoi/play';
 import Mode from './containers/PlayBoi/Mode';
 import { game } from '../invader';
-
+import LeaderBoard from '../leaderboard/leaderboard';
 import * as sceneKeys from '../constants/sceneKeys';
+import DashRunner from '../../assets/dashRunner.svg';
+
+import './App.scss';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      sceneKey: null,
-    };
-  }
+  state = {
+    sceneKey: null,
+  };
 
   counter = false;
 
   resize = () => {
-    const w = this.counter ? window.innerWidth : 780;
+    const w = this.counter ? window.innerWidth : 720;
     const h = this.counter ? window.innerHeight : 500;
 
-    this.counter = !this.counter;
     const canvas = document.querySelector('canvas');
     if (canvas) {
-      const windowWidth = w * devicePixelRatio;
-      const windowHeight = h * devicePixelRatio;
+      const windowWidth = w;
+      const windowHeight = h;
       const windowRatio = windowWidth / windowHeight;
       const gameRatio = game.config.width / game.config.height;
       if (windowRatio < gameRatio) {
@@ -46,8 +44,6 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    console.log('mount');
-
     this.initialiseGame(sceneKeys.MODE_SCENE_KEY);
     this.resize();
     window.addEventListener('resize', this.resize, false);
@@ -61,13 +57,14 @@ class App extends React.Component {
 
   switchScene(sceneKey) {
     let scene = null;
-    console.log(sceneKey);
+    console.log('scene key state', sceneKey);
     switch (this.state.sceneKey) {
       case sceneKeys.MODE_SCENE_KEY:
         scene = (
           <Mode
             sceneKey={sceneKeys.MODE_SCENE_KEY}
             initialiseGame={this.initialiseGame}
+            counter={this.counter}
           />
         );
         break;
@@ -92,6 +89,7 @@ class App extends React.Component {
           <Mode
             sceneKey={sceneKeys.MODE_SCENE_KEY}
             initialiseGame={this.initialiseGame}
+            counter={this.counter}
           />
         );
         break;
@@ -102,12 +100,43 @@ class App extends React.Component {
 
   render() {
     return (
-      <>
-        <Canvas />
-        <div id={this.state.sceneKey}>
-          {this.switchScene(this.state.sceneKey)}
+      <div className="codedash-container">
+        <div className="main-container">
+          <div className="content-container">
+            <div className="codedash-header-container">
+              <div className="codedash-primary-header">
+                <div className="primary-head-1">
+                  <p className="code-head">CODE DASH</p>
+                  <p className="secondary-head">
+                    Run, jump, answer coding questions to survive. Measure your
+                    high score against your peers.
+                  </p>
+                </div>
+                <div className="primary-head-2">
+                  <img
+                    src={DashRunner}
+                    className="runner-img"
+                    alt="runner-img"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="codedash-body">
+              <div className="codedash-game-container">
+                <div className="game">
+                  <Canvas />
+                  <div id={this.state.sceneKey}>
+                    {this.switchScene(this.state.sceneKey)}
+                  </div>
+                </div>
+                <div className="leaderboard">
+                  <LeaderBoard />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </>
+      </div>
     );
   }
 }

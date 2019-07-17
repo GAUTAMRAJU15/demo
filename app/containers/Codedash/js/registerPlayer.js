@@ -1,22 +1,33 @@
 import { game } from './invader';
-import { mode } from './firebase/firebase';
+import { mode } from './loginin/firebase';
 
-async function nameRegister(player, coins, picture, token, stuRef, initialise) {
+async function nameRegister(
+  player,
+  coins,
+  picture,
+  token,
+  initialise,
+  counter,
+) {
+  document.querySelector('.gamestart-modal').style.display = 'none';
+  document.querySelector('canvas').style.display = 'block';
 
-  // let coin = coins < 0 ? 0 : coins;
-        game.scene.start('ModeSelectScene', {
-          data: {
-            name: player,
-            coins,
-            id: "key",
-            mode,
-            currentGain: 0,
-            totalSecondsUsed: 0,
-            token,
-            initialise,
-          },
-        });
-    } 
-
+  // retreive the data from the user and started the game
+  console.log('name registere', initialise, counter);
+  game.scene.start('ModeSelectScene', {
+    data: {
+      name: player,
+      coins,
+      id: 'key',
+      mode,
+      currentGain: 0,
+      totalSecondsUsed: 0,
+      picture,
+      token,
+      initialise,
+      counter,
+    },
+  });
+}
 
 export default nameRegister;

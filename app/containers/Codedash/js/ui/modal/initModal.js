@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../../../assets/images/logo.png';
 import './initModal.scss';
+import { selectMode } from '../../loginin/firebase';
 
 class InitModal extends React.Component {
   state = {

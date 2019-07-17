@@ -61,7 +61,7 @@ class Question extends React.Component {
               className="unlock-btn"
               type="button"
             >
-              Unlock Hint for{' '}
+              Unlock Hint for&nbsp;
               <span className="imgContent">
                 10&nbsp;
                 <img src={coinImg} width="20" height="20" />

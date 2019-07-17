@@ -3,7 +3,7 @@ import Game from '../../../invader';
 import QuestionModal from '../../modal/questionModal';
 import OverModal from '../../modal/overmodal';
 import PurchaseModal from '../../modal/purchase';
-import InitModal from "../../modal/initModal";
+import InitModal from '../../modal/initModal';
 import './canvas.scss';
 
 class Canvas extends React.Component {
@@ -21,14 +21,14 @@ class Canvas extends React.Component {
 
   render() {
     return (
-      <>
+      <React.Fragment>
         <div id="game">
-          <InitModal />
           <QuestionModal />
           <PurchaseModal />
           <OverModal />
+          <InitModal />
         </div>
-      </>
+      </React.Fragment>
     );
   }
 }

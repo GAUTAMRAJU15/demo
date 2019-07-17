@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Header_Background" width="1440" height="500" data-name="Header Background" viewBox="0 0 1440 500">
+    <defs>
+        <style>
+            .cls-1{fill:url(#linear-gradient)}.cls-2{fill:url(#linear-gradient-2)}.cls-3{clip-path:url(#clip-path)}.cls-4{opacity:.141;fill:url(#linear-gradient-3)}.cls-5,.cls-7{opacity:.06}.cls-5{fill:url(#linear-gradient-4)}.cls-6{fill:#70bffd;opacity:.23}.cls-7{fill:url(#linear-gradient-5)}.cls-8{opacity:.532;fill:url(#linear-gradient-6)}.cls-9{filter:url(#Triangle_Copy_4)}.cls-10{filter:url(#Triangle_Copy-2)}.cls-11{filter:url(#Path_2)}.cls-12{filter:url(#Triangle_Copy)}.cls-13{filter:url(#Triangle_Copy_5)}
+        </style>
+        <linearGradient id="linear-gradient" x1=".511" x2=".511" y1=".393" y2="1.588" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#207cee"/>
+            <stop offset=".61" stop-color="#60b9f2"/>
+            <stop offset="1" stop-color="#aafef7"/>
+        </linearGradient>
+        <linearGradient id="linear-gradient-2" x1=".511" x2=".511" y1=".393" y2="1.588" xlink:href="#linear-gradient"/>
+        <clipPath id="clip-path">
+            <path id="Rectangle_32" d="M0 0h1440v500H0z" class="cls-1" data-name="Rectangle 32"/>
+        </clipPath>
+        <linearGradient id="linear-gradient-3" x1=".081" x2=".554" y1=".325" y2=".308" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#2474f1"/>
+            <stop offset="1" stop-color="#68d1f9"/>
+        </linearGradient>
+        <filter id="Triangle_Copy_5" width="1126.174" height="862.164" x="-369.314" y="-442.578" filterUnits="userSpaceOnUse">
+            <feOffset dy="2"/>
+            <feGaussianBlur result="blur" stdDeviation="2"/>
+            <feFlood flood-opacity=".059"/>
+            <feComposite in2="blur" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <linearGradient id="linear-gradient-4" x1=".5" x2=".469" y1=".674" y2="1.179" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#83f1ff"/>
+            <stop offset="1" stop-color="#3ce9f0"/>
+        </linearGradient>
+        <filter id="Triangle_Copy" width="721.454" height="718.263" x="554.448" y="-584.324" filterUnits="userSpaceOnUse">
+            <feOffset dy="2"/>
+            <feGaussianBlur result="blur-2" stdDeviation="2"/>
+            <feFlood flood-opacity=".051"/>
+            <feComposite in2="blur-2" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <filter id="Path_2" width="287.149" height="280.125" x="-78.234" y="226.275" filterUnits="userSpaceOnUse">
+            <feOffset dy="2"/>
+            <feGaussianBlur result="blur-3" stdDeviation="2"/>
+            <feFlood flood-opacity=".035"/>
+            <feComposite in2="blur-3" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <linearGradient id="linear-gradient-5" x1=".5" x2=".469" y1=".674" y2="1.179" xlink:href="#linear-gradient-4"/>
+        <filter id="Triangle_Copy-2" width="531.422" height="509.34" x="524.817" y="-416.099" filterUnits="userSpaceOnUse">
+            <feOffset dy="2"/>
+            <feGaussianBlur result="blur-4" stdDeviation="2"/>
+            <feFlood flood-opacity=".051"/>
+            <feComposite in2="blur-4" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <linearGradient id="linear-gradient-6" x1=".053" x2="1" y1=".237" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#2474f1"/>
+            <stop offset="1" stop-color="#3cc1f4"/>
+        </linearGradient>
+        <filter id="Triangle_Copy_4" width="1086.058" height="1039.071" x="603.324" y="-520.706" filterUnits="userSpaceOnUse">
+            <feOffset dy="2"/>
+            <feGaussianBlur result="blur-5" stdDeviation="2"/>
+            <feFlood flood-opacity=".059"/>
+            <feComposite in2="blur-5" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+    </defs>
+    <path id="Rectangle_32-2" d="M0 0h1440v500H0z" class="cls-2" data-name="Rectangle 32"/>
+    <g id="Header_Background-2" class="cls-3" data-name="Header Background">
+        <g class="cls-13">
+            <path id="Triangle_Copy_5-2" d="M1093.849 850.163L9.9 836.37a10.032 10.032 0 0 1-7.438-16.619L710.273 6.888a20.064 20.064 0 0 1 33.252 4.561l151.606 318.894 217.324 491.646a20.064 20.064 0 0 1-18.606 28.174z" class="cls-4" data-name="Triangle Copy 5" transform="translate(-363.31 -438.58)"/>
+        </g>
+        <g class="cls-12">
+            <path id="Triangle_Copy-3" d="M276.972 5.261a10.032 10.032 0 0 1 17.762.216l226.782 444.89a10.032 10.032 0 0 1-7.651 14.505L11.318 529.855a10.032 10.032 0 0 1-10.11-14.721z" class="cls-5" data-name="Triangle Copy" transform="matrix(-.45 .89 -.89 -.45 1269.89 -339.72)"/>
+        </g>
+        <g class="cls-11">
+            <path id="Path_2-2" d="M.389 12.8A10.032 10.032 0 0 1 11.953.187l255.084 49.754a10.032 10.032 0 0 1 5.435 16.668l-183.9 198.3a10.032 10.032 0 0 1-17-4.054z" class="cls-6" data-name="Path 2" transform="translate(-72.23 230.28)"/>
+        </g>
+        <g class="cls-10">
+            <path id="Triangle_Copy-4" d="M509.391 497.251l-499.357.088a10.032 10.032 0 0 1-9.451-13.4L170.835 6.664a10.032 10.032 0 0 1 17.707-2.325l329.105 477.185a10.032 10.032 0 0 1-8.257 15.728z" class="cls-7" data-name="Triangle Copy" transform="translate(530.82 -412.1)"/>
+        </g>
+        <g class="cls-9">
+            <path id="Triangle_Copy_4-2" d="M1053.986 1027.071L10.03 1026.9a10.032 10.032 0 0 1-9.667-12.707L276.914 14.718a20.064 20.064 0 0 1 32.927-9.411L854.6 506.821l217.736 492.068a20.064 20.064 0 0 1-18.351 28.183z" class="cls-8" data-name="Triangle Copy 4" transform="translate(609.32 -516.71)"/>
+        </g>
+    </g>
+</svg>

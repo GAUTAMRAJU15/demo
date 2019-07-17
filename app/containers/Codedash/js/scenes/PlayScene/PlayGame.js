@@ -8,11 +8,10 @@ import skyImg from '../../../assets/images/sky1.png';
 import themeSound from '../../../assets/sound/startSound.mp3';
 import deathSound from '../../../assets/sound/explode1.mp3';
 import coinSound from '../../../assets/sound/p-ping.mp3';
-import { coinData, gameOver, pushQuestion } from '../../questionModal/data';
+import { gameOver, pushQuestion } from '../../questionModal/data';
 import bg01 from '../../../assets/images/bg01.png';
 import bg02 from '../../../assets/images/bg02.png';
 import bg03 from '../../../assets/images/bg03.jpg';
-// import Phaser from 'phaser';
 
 document.addEventListener('fullscreenchange', exitHandler);
 document.addEventListener('webkitfullscreenchange', exitHandler);
@@ -28,20 +27,21 @@ function exitHandler() {
   ) {
     const mod = document.querySelector('.showModal');
     const purchase = document.querySelector('.show-purchase');
-
+    const game = document.querySelector("#game");
+    game.style.background = "#fff";
+    this.counterSize = false;
     if (mod) {
       mod.style.setProperty('position', 'absolute', 'important');
       mod.style.width = '630px';
-      mod.style.height = '450px';
-      mod.style.top = '200px';
+      mod.style.height = '350px';
+      mod.style.top = '160px';
       mod.style.left = '38%';
       mod.style.marginTop = '40px';
       mod.style.marginLeft = '12%';
-      mod.style.maxHeight = '300px';
     }
 
     if (purchase) {
-      purchase.style.top = '200px';
+      purchase.style.top = '170px';
       purchase.style.left = '38%';
     }
   }
@@ -79,22 +79,23 @@ export default class PlayGame extends Phaser.Scene {
     this.dying = false;
     this.fromGameOver = data.data.fromGameOver || 'true';
     this.initialise = data.data.initialise;
+    this.counterSize = data.data.counter;
     this.isPurchased = 0;
     this.gain = 0;
   }
 
   // preloads the content before game assets placement
   preload() {
-    this.load.image('ques', QuesImg);
-    this.load.image('timer', clockImg);
-    this.load.image('life1', lifeImg);
-    this.load.image('star', coinImg);
+    this.textures.addBase64('ques', QuesImg);
+    this.textures.addBase64('timer', clockImg);
+    this.textures.addBase64('life1', lifeImg);
+    this.textures.addBase64('star', coinImg);
     this.load.audio('theme', themeSound);
     this.load.audio('death', deathSound);
     this.load.audio('starmusic', coinSound);
-    this.load.image('bg01', bg01);
-    this.load.image('bg02', bg02);
-    this.load.image('bg03', bg03);
+    this.textures.addBase64('bg01', bg01);
+    this.textures.addBase64('bg02', bg02);
+    this.textures.addBase64('bg03', bg03);
 
     if (this.fromGameOver === 'true') {
       const { width } = this.cameras.main;
@@ -116,6 +117,7 @@ export default class PlayGame extends Phaser.Scene {
         y: height / 2 - 50,
         text: 'Loading Code Dash...',
         style: {
+          fontFamily: 'Montserrat',
           font: '600 25px Montserrat',
           fill: '#ffffff',
         },
@@ -142,7 +144,7 @@ export default class PlayGame extends Phaser.Scene {
         },
       });
       assetText.setOrigin(0.5, 0.5);
-      this.load.on('progress', function(value) {
+      this.load.on('progress', value => {
         percentText.setText(`${parseInt(value * 100)}%`);
         progressBar.clear();
         progressBar.fillStyle(0xffffff, 0.5);
@@ -154,10 +156,10 @@ export default class PlayGame extends Phaser.Scene {
           30,
         );
       });
-      this.load.on('fileprogress', function(file) {
+      this.load.on('fileprogress', file => {
         assetText.setText(`Loading asset: ${file.key}`);
       });
-      this.load.on('complete', function() {
+      this.load.on('complete', () => {
         progressBar.destroy();
         progressBox.destroy();
         loadingText.destroy();
@@ -196,9 +198,9 @@ export default class PlayGame extends Phaser.Scene {
       this.coinGroup.remove(coin);
       this.coins += bonus;
       this.currentGain += bonus;
-      this.gain += bonus;
       this.scoreText.setText(this.coins);
       this.starmusic.play();
+      this.gain += bonus;
     }
   }
 
@@ -228,7 +230,7 @@ export default class PlayGame extends Phaser.Scene {
       },
     });
 
-    this.lives.children.iterate(function(life) {
+    this.lives.children.iterate(life => {
       life.displayWidth = 30 * window.devicePixelRatio;
       life.displayHeight = 30 * window.devicePixelRatio;
     });
@@ -294,7 +296,7 @@ export default class PlayGame extends Phaser.Scene {
       ? document.querySelector('.modal-dialog').classList.add('showModal')
       : null;
 
-    this.mod1 = document.querySelector('.show-purchase');
+    this.mod1 = document.querySelector('.show-pur.show-purcchase');
     !this.mod1
       ? document.querySelector('.purchase').classList.add('show-purchase')
       : null;
@@ -329,16 +331,18 @@ export default class PlayGame extends Phaser.Scene {
 
         const mod = document.querySelector('.showModal');
         const purchase = document.querySelector('.show-purchase');
+        const game = document.querySelector("#game");
+
 
         if (mod) {
           mod.style.setProperty('position', 'fixed', 'important');
-          mod.style.width = '710px';
-          mod.style.height = '450px';
+          mod.style.width = '810px';
+          mod.style.height = '550px';
           mod.style.top = '70%';
           mod.style.left = '50%';
           mod.style.marginTop = '-100px';
           mod.style.marginLeft = '-10px';
-          mod.style.maxHeight = 'none';
+          // mod.style.maxHeight = 'none';
         }
 
         if (purchase) {
@@ -347,7 +351,9 @@ export default class PlayGame extends Phaser.Scene {
         }
 
         if (!(fullscreenElement && fullscreenEnabled)) {
+          game.style.background = "none";
           launchIntoFullscreen(document.getElementById('game'));
+          this.counterSize = true;
         }
       },
       this,
@@ -420,6 +426,7 @@ export default class PlayGame extends Phaser.Scene {
       game.config.height * 0.2,
       '',
       {
+        fontFamily: 'Montserrat',
         font: 'bold 50px Montserrat',
         fill: '#1f2a55',
       },
@@ -433,6 +440,7 @@ export default class PlayGame extends Phaser.Scene {
       game.config.height * 0.075,
       '',
       {
+        fontFamily: 'Montserrat',
         font: 'bold 30px Montserrat',
         fill: '#1f2a55',
       },
@@ -709,7 +717,6 @@ export default class PlayGame extends Phaser.Scene {
   }
 
   update() {
-    console.log(this.currentCoin, this.currentGain, this.coins);
     if (this.askingQuestion || this.fallOver) {
       this.mountainsBack.tilePositionX += 0;
       this.mountainsMid.tilePositionX += 0;
@@ -746,7 +753,7 @@ export default class PlayGame extends Phaser.Scene {
     let rightmostPlatformHeight = 0;
 
     try {
-      this.platformGroup.getChildren().forEach(function(platform) {
+      this.platformGroup.getChildren().forEach(platform => {
         const platformDistance =
           game.config.width - platform.x - platform.displayWidth / 2;
         if (platformDistance < minDistance) {
@@ -758,7 +765,57 @@ export default class PlayGame extends Phaser.Scene {
           this.platformGroup.remove(platform);
         }
       }, this);
-    } catch (err) {
+
+      this.coinGroup.getChildren().forEach(function(coin) {
+        if (coin.x < -coin.displayWidth / 2) {
+          this.coinGroup.killAndHide(coin);
+          this.coinGroup.remove(coin);
+        }
+      }, this);
+
+      this.quesGroup.getChildren().forEach(function(ques) {
+        if (ques.x < -ques.displayWidth / 2) {
+          this.quesGroup.killAndHide(ques);
+          this.quesGroup.remove(ques);
+        }
+      }, this);
+
+      this.fireGroup.getChildren().forEach(function(fire) {
+        if (fire.x < -fire.displayWidth / 2) {
+          this.fireGroup.killAndHide(fire);
+          this.fireGroup.remove(fire);
+        }
+      }, this);
+
+      // adding new platforms
+      if (minDistance > this.nextPlatformDistance) {
+        const nextPlatformWidth = Phaser.Math.Between(
+          gameOptions.platformSizeRange[0],
+          gameOptions.platformSizeRange[1],
+        );
+        const platformRandomHeight =
+          gameOptions.platformHeighScale *
+          Phaser.Math.Between(
+            gameOptions.platformHeightRange[0],
+            gameOptions.platformHeightRange[1],
+          );
+        const nextPlatformGap = rightmostPlatformHeight + platformRandomHeight;
+        const minPlatformHeight =
+          game.config.height * gameOptions.platformVerticalLimit[0];
+        const maxPlatformHeight =
+          game.config.height * gameOptions.platformVerticalLimit[1];
+        const nextPlatformHeight = Phaser.Math.Clamp(
+          nextPlatformGap,
+          minPlatformHeight,
+          maxPlatformHeight,
+        );
+        this.addPlatform(
+          nextPlatformWidth,
+          game.config.width + nextPlatformWidth / 2,
+          nextPlatformHeight,
+        );
+      }
+    } catch (e) {
       game.scene.start('GameOver', {
         coins: this.coins,
         currentCoin: this.currentCoin,
@@ -767,56 +824,6 @@ export default class PlayGame extends Phaser.Scene {
         text: 'YOU DIED, GAME OVER',
         initialise: this.initialise,
       });
-    }
-
-    this.coinGroup.getChildren().forEach(function(coin) {
-      if (coin.x < -coin.displayWidth / 2) {
-        this.coinGroup.killAndHide(coin);
-        this.coinGroup.remove(coin);
-      }
-    }, this);
-
-    this.quesGroup.getChildren().forEach(function(ques) {
-      if (ques.x < -ques.displayWidth / 2) {
-        this.quesGroup.killAndHide(ques);
-        this.quesGroup.remove(ques);
-      }
-    }, this);
-
-    this.fireGroup.getChildren().forEach(function(fire) {
-      if (fire.x < -fire.displayWidth / 2) {
-        this.fireGroup.killAndHide(fire);
-        this.fireGroup.remove(fire);
-      }
-    }, this);
-
-    // adding new platforms
-    if (minDistance > this.nextPlatformDistance) {
-      const nextPlatformWidth = Phaser.Math.Between(
-        gameOptions.platformSizeRange[0],
-        gameOptions.platformSizeRange[1],
-      );
-      const platformRandomHeight =
-        gameOptions.platformHeighScale *
-        Phaser.Math.Between(
-          gameOptions.platformHeightRange[0],
-          gameOptions.platformHeightRange[1],
-        );
-      const nextPlatformGap = rightmostPlatformHeight + platformRandomHeight;
-      const minPlatformHeight =
-        game.config.height * gameOptions.platformVerticalLimit[0];
-      const maxPlatformHeight =
-        game.config.height * gameOptions.platformVerticalLimit[1];
-      const nextPlatformHeight = Phaser.Math.Clamp(
-        nextPlatformGap,
-        minPlatformHeight,
-        maxPlatformHeight,
-      );
-      this.addPlatform(
-        nextPlatformWidth,
-        game.config.width + nextPlatformWidth / 2,
-        nextPlatformHeight,
-      );
     }
   }
 }

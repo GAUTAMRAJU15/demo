@@ -1,5 +1,5 @@
 import React from 'react';
-import CodeDashLodable from './lodable';
+import CodeDashLodable from './loadable';
 
 class CodeDash extends React.Component {
   componentWillMount() {
@@ -38,7 +38,11 @@ class CodeDash extends React.Component {
 
   render() {
     console.log('code dash render: ', this.state);
-    return <>{this.state.phaserLoaded && <CodeDashLodable />}</>;
+    return (
+      <React.Fragment>
+        {this.state.phaserLoaded && <CodeDashLodable />}
+      </React.Fragment>
+    );
   }
 }
 

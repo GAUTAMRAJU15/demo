@@ -1,123 +1,120 @@
 .gameover-modal {
-    display: none;
-    position: absolute;
-    top: 48%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-  }
-  .gameover-body {
-    text-align: center;
-    color: #ffffff;
-    height: 270px;
-    width: 590px;
-    background: #fff;
-    border-radius: 10px;
-    position: relative;
-  }
-  .gameover_svg {
-    width: 330px;
-    height: 70px;
-    position: relative;
-    top: -46px;
-  }
+  display: none;
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.gameover-body {
+  text-align: center;
+  color: #ffffff;
+  height: 250px;
+  width: 590px;
+  background: #fff;
+  border-radius: 10px;
+  position: relative;
+}
+.gameover_svg {
+  width: 330px;
+  height: 70px;
+  position: relative;
+  top: -46px;
+}
 
-  .gameover-info {
-    display: flex;
-    justify-content: space-evenly;
-  }
+.gameover-info {
+  display: flex;
+  justify-content: space-evenly;
+}
 
-  .session-text {
-    text-transform: uppercase;
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 1.29;
-    letter-spacing: 0.4px;
-    color: #1f2a55;
-    position: relative;
-    top: -35px;
-  }
+.session-text {
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.29;
+  letter-spacing: 0.4px;
+  color: #1f2a55;
+  position: relative;
+  top: -35px;
+}
 
-  .survival-text , .coin_inc{
-    text-transform: capitalize;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.29;
-    color: #1f2a55;
-  }
+.survival-text,
+.coin_inc {
+  text-transform: capitalize;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.29;
+  color: #1f2a55;
+}
 
-  .coins-earned {
-    position: absolute;
-    bottom: 0px;
-    background: #f3f3f3;
-    width: 100%;
-    padding: 5px;
-    box-sizing: border-box;
-    border-radius: 10px;
-    
-  }
+.coins-earned {
+  position: absolute;
+  bottom: 0px;
+  background: #f3f3f3;
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
 
-  .coins-earned-info{
-    width: 400px;
-    margin: 0 auto;
-    font-size: 16px;
-    font-weight: 500;
-    color: #1f2a55;
-    letter-spacing: 0.44px;
-    margin-bottom: 10px;
-  }
+.coins-earned-info {
+  width: 400px;
+  margin: 0 auto;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1f2a55;
+  letter-spacing: 0.44px;
+  margin: 10 0 10 0;
+}
 
-  .gameover-coinearntext {
-    display: flex;
-    align-items: flex-start;
-    margin: 15px auto;
-  }
+.gameover-coinearntext {
+  display: flex;
+  align-items: center;
+  margin: 15px auto;
+}
 
-  .gameover-cointext {
-    color: #f1bd19;
-    font-weight: 600;
-  }
+.gameover-cointext {
+  color: #f1bd19;
+  font-weight: 600;
+}
 
-  .coins-session {
-    color: #f1bd19;
-    font-weight: 600;
-    font-size: 50px;
-  }
+.coins-session {
+  color: #f1bd19;
+  font-weight: 600;
+  font-size: 40px;
+}
 
-  .gameover-btn {
-    opacity: 0.6;
-    border-radius: 4px;
-    background-color: #000;
-    width: 303.1px;
-    height: 48px;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.19;
-    letter-spacing: 1.6px;
-    color: #fff;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    text-transform: uppercase;
-    left: 25%;
-    position: relative;
-    top: 20px;
-  }
-  .coins-earned-info img {
-    position: relative;
-    top: 10px;
-    margin-left: 10px;
-  }
-  .timer-text {
-    font-size: 50px;
-    margin: 15px auto;
-    color: #1f2a55;
-  }
+.gameover-btn {
+  opacity: 0.6;
+  border-radius: 4px;
+  background-color: #000;
+  width: 203.1px;
+  height: 38px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.19;
+  letter-spacing: 1.6px;
+  color: #fff;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  position: relative;
+  top: 20px;
+}
+.coins-earned-info img {
+  margin-left: 10px;
+}
+.timer-text {
+  font-size: 40px;
+  margin: 15px auto;
+  color: #1f2a55;
+}
 
-
-  .separator {
-    height: 50px;
-    width: 1px;
-    background: #d8d8d8;
-    position: relative;
-    top: 40px;
-  }
+.separator {
+  height: 50px;
+  width: 1px;
+  background: #d8d8d8;
+  position: relative;
+  top: 40px;
+}

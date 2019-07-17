@@ -1,0 +1,23 @@
+.codedashleaderboard {
+    width: 340px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 3px 7px 0px;;
+    background: rgb(255, 255, 255);
+    border-radius: 4px 4px 0px 0px;
+    min-height: 330px;
+    position: relative;
+    top: 50px;
+    .leaderboard-title {
+        width: 90%;
+        margin: 0 auto;
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 1.41px;
+        text-align: center;
+        color: #1f2a55;
+        padding-top: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+}

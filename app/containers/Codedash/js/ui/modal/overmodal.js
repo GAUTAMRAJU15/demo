@@ -23,7 +23,7 @@ class OverModal extends React.Component {
             <div className="coin-info">
               <div className="coin_inc">Coins Earned:</div>
               <div className="gameover-coinearntext">
-                <img src={coinImg} width="70" height="70" />
+                <img src={coinImg} width="60" height="60" />
                 <div className="coins-session" />
               </div>
             </div>
