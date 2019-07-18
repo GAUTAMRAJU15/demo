@@ -13,7 +13,7 @@ async function nameRegister(
   document.querySelector('canvas').style.display = 'block';
 
   // retreive the data from the user and started the game
-  console.log('name registere', initialise, counter);
+  console.log('name registere', initialise, counter, game);
   game.scene.start('ModeSelectScene', {
     data: {
       name: player,

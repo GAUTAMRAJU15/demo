@@ -4,6 +4,7 @@ import coinImg from '../../../assets/images/coin.png';
 import './purchase.scss';
 
 class Purchase extends React.Component {
+
   render() {
     return (
       <div className="myPurchaseModal">

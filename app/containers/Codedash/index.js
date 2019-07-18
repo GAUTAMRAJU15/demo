@@ -3,17 +3,23 @@ import CodeDashLodable from './loadable';
 
 class CodeDash extends React.Component {
   componentWillMount() {
-    this.loadPhaser()
-      .then(() => {
-        this.setState({
-          phaserLoaded: true,
-        });
-      })
-      .catch(err => {
-        this.setState({
-          phaserLoaded: true,
-        });
+    if (window.Phaser) {
+      this.setState({
+        phaserLoaded: true,
       });
+    } else {
+      this.loadPhaser()
+        .then(() => {
+          this.setState({
+            phaserLoaded: true,
+          });
+        })
+        .catch(err => {
+          this.setState({
+            phaserLoaded: true,
+          });
+        });
+    }
   }
 
   loadPhaser = async () => {
@@ -37,7 +43,7 @@ class CodeDash extends React.Component {
   };
 
   render() {
-    console.log('code dash render: ', this.state);
+    console.log('phaser loaded', this.state.phaserLoaded, window.Phaser);
     return (
       <React.Fragment>
         {this.state.phaserLoaded && <CodeDashLodable />}

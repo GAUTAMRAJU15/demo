@@ -1,6 +1,7 @@
 #game {
   font-family: Montserrat;
-  width: 720px;
+  // max-width: 920px;
+  width: calc(100% - 570px);
   margin: 50px auto;
   position: relative;
   background: #fff;

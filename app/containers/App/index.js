@@ -9,7 +9,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter} from 'react-router-dom';
 
 // import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
@@ -19,8 +19,7 @@ import Codedash from 'containers/Codedash';
 import GlobalStyle from '../../global-styles';
 
 
-
-export default function App() {
+function App(props) {
   return (
     <React.Fragment>
       <Helmet
@@ -30,6 +29,16 @@ export default function App() {
         <meta name="description" content="A React.js Boilerplate application" />
       </Helmet>
       <Switch>
+        <Route
+          exact
+          path="/"
+          render={() => (
+            // eslint-disable-next-line react/button-has-type
+            <button type="button" onClick={() => props.history.push('/codedash')}>
+              Click me
+            </button>
+          )}
+        />
         <Route exact path="/codedash" component={Codedash} />
       </Switch>
 
@@ -37,3 +46,5 @@ export default function App() {
     </React.Fragment>
   );
 }
+
+export default withRouter(App);

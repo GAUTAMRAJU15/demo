@@ -4,9 +4,6 @@ import coinImg from '../../../assets/images/coin.png';
 import './over.scss';
 
 class OverModal extends React.Component {
-  componentDidMount() {
-    console.log('game over scene init');
-  }
 
   render() {
     return (

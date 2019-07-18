@@ -1,10 +1,8 @@
 import { mode } from '../loginin/firebase';
 import { game, gameOptions } from '../invader';
-import { stuRef } from '../ui/containers/PlayBoi/Mode';
 import jsLoader, { jsData } from './jsLoader';
 import htmlLoader, { htmlData } from './htmlLoader';
 import cssLoader, { cssData } from './cssLoader';
-// import heart from "../../assets/images/life1.png";
 
 let question = null;
 let isDeadPlayer = null;
@@ -314,12 +312,6 @@ const unlockHint = async () => {
     } else {
       playScene.coins = coin;
       playScene.currentGain = cGain;
-      const userRef = stuRef.ref;
-      await userRef.child(playScene.id).ref.update({
-        coins: playScene.coins,
-        id: playScene.id,
-        name: playScene.name,
-      });
     }
     playScene.unlockHintCounter++;
     playScene.scoreText.setText(playScene.coins);
@@ -383,7 +375,7 @@ function gameOver(i, game, isDead, arrayIndices) {
     if (playScene.chances === 0) {
       playScene.lastChance = true;
     }
-    if (playScene.deletingLife == false) {
+    if (playScene.deletingLife === false) {
       playScene.deletingLife = true;
 
       // looks at the heart image at top right corner
@@ -435,13 +427,13 @@ function gameOver(i, game, isDead, arrayIndices) {
 
       if (playScene.chances === 0) {
         showPurchaseModal(p => {
-          if (p == 1) {
+          if (p === 1) {
             playScene.askingQuestion = true;
             console.log('resumin game');
             game.scene.resume('PlayGame');
             pushQuestion(i, game, isDead, arrayIndices, true);
           }
-          if (p == 2) {
+          if (p === 2) {
             overGame(); // player intentionally ends;
           }
         }); // player gets prompt for purchase

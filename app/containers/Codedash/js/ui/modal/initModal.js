@@ -8,10 +8,12 @@ class InitModal extends React.Component {
     value: 'true',
   };
 
+
   selectOption = e => {
     this.setState({ value: e.target.value });
     selectMode(e.target.value);
   };
+
 
   render() {
     return (

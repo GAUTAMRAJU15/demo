@@ -5,6 +5,9 @@ class GameOver extends React.Component {
     console.log('game over scene init');
   }
 
+  componentWillUnmount() {
+    console.log("gane over unmounted")
+  }
   render() {
     return null;
   }

@@ -8,7 +8,8 @@ import './canvas.scss';
 
 class Canvas extends React.Component {
   componentDidMount() {
-    this.game = Game.createGame();
+    this.game = new Game();
+    this.game.createGame();
   }
 
   shouldComponentUpdate() {
@@ -16,19 +17,17 @@ class Canvas extends React.Component {
   }
 
   componentWillUnmount() {
-    Game.destroyGame(this.game);
+    this.game.destroyGame();
   }
 
   render() {
     return (
-      <React.Fragment>
-        <div id="game">
-          <QuestionModal />
-          <PurchaseModal />
-          <OverModal />
-          <InitModal />
-        </div>
-      </React.Fragment>
+      <div id="game">
+        <QuestionModal />
+        <PurchaseModal />
+        <OverModal />
+        <InitModal />
+      </div>
     );
   }
 }

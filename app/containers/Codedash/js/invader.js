@@ -1,8 +1,11 @@
-import CONFIG from './constants/config';
-// import Phaser from "phaser";
+import ModeSelectScene from './scenes/PlayScene/ModeSelect';
+import PreLoadScene from './scenes/PlayScene/preLoadScene';
+import PlayGame from './scenes/PlayScene/PlayGame';
+import GameOverScene from './scenes/GameOverScene/GameOver';
+
 
 let game;
-let screenAdjust = {}; // screen object popluates  with value according to the screen mode
+
 
 // global game options
 const gameOptions = {
@@ -47,22 +50,38 @@ const gameOptions = {
   firePercent: 50,
 };
 
-const setGameScreenState = screenstate => {
-  screenAdjust = screenstate;
-  console.log(screenAdjust);
-};
-
 class Games {
-  static createGame() {
-    console.log('game creation phaser called with config');
-    game = new Phaser.Game(CONFIG);
+  CONFIG = {
+    type: Phaser.AUTO,
+    width: (window.innerWidth - 570) * window.devicePixelRatio,
+    height: 500 * window.devicePixelRatio,
+    scene: [ModeSelectScene, PreLoadScene, PlayGame, GameOverScene],
+    backgroundColor: 0x0c88c7,
+    parent: 'game',
+    scale: {
+      mode: Phaser.Scale.FIT,
+      autoCenter: Phaser.Scale.CENTER_BOTH,
+      parent: 'game',
+      width: 1334,  
+      height: 750,
+    },
+    physics: {
+      default: 'arcade',
+    },
+  };
+
+  createGame() {
+    game = new Phaser.Game(this.CONFIG);
     return game;
   }
 
-  static destroyGame(game) {
-    game.destroy();
+  destroyGame() {
+    game.destroy(true);
+    game.events.on("destroy",()=>{
+      game = undefined;
+    });
   }
 }
 
-export { game, gameOptions, screenAdjust, setGameScreenState };
+export { game, gameOptions };
 export default Games;

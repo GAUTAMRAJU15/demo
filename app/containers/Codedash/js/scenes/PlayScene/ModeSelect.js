@@ -16,7 +16,6 @@ export default class ModeSelectScene extends Phaser.Scene {
   }
 
   init(data) {
-    console.log('init fame scene', data);
     if (data.data !== undefined) {
       this.currentGain = 0;
       this.coins = data.data.coins || 0;

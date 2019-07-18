@@ -5,6 +5,7 @@ import hintImg from '../../../assets/images/hint.svg';
 import './style.scss';
 
 class Question extends React.Component {
+
   render() {
     return (
       <div className="myModal">

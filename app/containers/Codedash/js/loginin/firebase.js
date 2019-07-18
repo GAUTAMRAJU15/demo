@@ -6,6 +6,7 @@ let mode = null;
 let userId_1 = null;
 
 function startGame(initialise, counter) {
+  console.log("asdadasdasnjdasjkdakndska startgame")
   if (localStorage.getItem('authToken')) {
     const url = 'https://api-dev.campk12.live/protected/user/getUserCoins';
     fetch(url, {
@@ -20,11 +21,13 @@ function startGame(initialise, counter) {
       .then(res => res.json())
       .then(async response => {
         const userBasicProfile = response.body;
+        console.log(userBasicProfile,"//")
         userId_1 = userBasicProfile._id;
         const username = userBasicProfile.common.name;
         const coins = userBasicProfile.common.coins;
         const picture = userBasicProfile.common.picture.croppedImage;
         const token = localStorage.getItem('authToken');
+        // console.log(token)
         await nameRegister(
           username,
           coins,
@@ -35,7 +38,7 @@ function startGame(initialise, counter) {
         );
       })
       .catch(error => {
-        callError();
+        console.error(error)
       });
   }
 }

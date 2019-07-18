@@ -15,15 +15,25 @@ import './App.scss';
 class App extends React.Component {
   state = {
     sceneKey: null,
+    showGame: true,
   };
 
   counter = false;
 
   resize = () => {
-    const w = this.counter ? window.innerWidth : 720;
-    const h = this.counter ? window.innerHeight : 500;
+    if (window.innerWidth < 768) {
+      this.setState({ showGame: false });
+    } else {
+      this.setState({ showGame: true });
+    }
 
+
+    const w = this.counter
+      ? window.innerWidth
+      : (window.innerWidth - 570) * window.devicePixelRatio;
+    const h = this.counter ? window.innerHeight : 500;
     const canvas = document.querySelector('canvas');
+
     if (canvas) {
       const windowWidth = w;
       const windowHeight = h;
@@ -55,10 +65,13 @@ class App extends React.Component {
     });
   };
 
+  componentWillUnmount() {
+    this.initialiseGame(null);
+  }
+
   switchScene(sceneKey) {
     let scene = null;
-    console.log('scene key state', sceneKey);
-    switch (this.state.sceneKey) {
+    switch (sceneKey) {
       case sceneKeys.MODE_SCENE_KEY:
         scene = (
           <Mode
@@ -102,36 +115,46 @@ class App extends React.Component {
     return (
       <div className="codedash-container">
         <div className="main-container">
-          <div className="content-container">
-            <div className="codedash-header-container">
-              <div className="codedash-primary-header">
-                <div className="primary-head-1">
-                  <p className="code-head">CODE DASH</p>
-                  <p className="secondary-head">
-                    Run, jump, answer coding questions to survive. Measure your
-                    high score against your peers.
-                  </p>
-                </div>
-                <div className="primary-head-2">
-                  <img
-                    src={DashRunner}
-                    className="runner-img"
-                    alt="runner-img"
-                  />
+          <div className="banner-container">
+            <div className="content-container">
+              <div className="codedash-header-container">
+                <div className="codedash-primary-header">
+                  <div className="primary-head-1">
+                    <p className="code-head">CODE DASH</p>
+                    <p className="secondary-head">
+                      Run, jump, answer coding questions to survive. Measure
+                      your high score against your peers
+                    </p>
+                  </div>
+                  <div className="primary-head-2">
+                    <img
+                      src={DashRunner}
+                      className="runner-img"
+                      alt="runner-img"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
+          <div className="content-container body">
             <div className="codedash-body">
               <div className="codedash-game-container">
-                <div className="game">
-                  <Canvas />
-                  <div id={this.state.sceneKey}>
-                    {this.switchScene(this.state.sceneKey)}
-                  </div>
-                </div>
-                <div className="leaderboard">
-                  <LeaderBoard />
-                </div>
+                {this.state.showGame ? (
+                  <React.Fragment>
+                    <div className="game">
+                      <Canvas />
+                      <div id={this.state.sceneKey}>
+                        {this.switchScene(this.state.sceneKey)}
+                      </div>
+                    </div>
+                    <div className="leaderboard">
+                      <LeaderBoard />
+                    </div>
+                  </React.Fragment>
+                ) : (
+                  <p>Screen size not good enough to play </p>
+                )}
               </div>
             </div>
           </div>

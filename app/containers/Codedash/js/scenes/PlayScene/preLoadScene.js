@@ -9,6 +9,7 @@ import ModeSelectScene from './ModeSelect';
 export default class PreLoadScene extends Phaser.Scene {
   constructor() {
     super(`${PRE_SCENE_KEY}`);
+
   }
 
   init(data) {

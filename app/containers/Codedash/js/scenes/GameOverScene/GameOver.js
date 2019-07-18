@@ -1,6 +1,5 @@
 // import Phaser from "phaser";
 import { OVER_SCENE_KEY } from '../../constants/sceneKeys';
-import { stuRef } from '../../ui/containers/PlayBoi/Mode';
 import { coinData } from '../../questionModal/data';
 import Sky from '../../../assets/images/sky1.png';
 import { game } from '../../invader';
@@ -23,7 +22,6 @@ export default class GameOverScene extends Phaser.Scene {
     this.unlockHintCounter = 0;
     this.initialise = data.initialise;
     const playScene = game.scene.getScene('PlayGame');
-    console.log('playScene', playScene, game.scene.scenes.playGame);
     playScene.music.stop();
     if (playScene.currentCoin + playScene.gain >= 0) {
       coinData(playScene.gain);
