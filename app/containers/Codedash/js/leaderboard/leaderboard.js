@@ -13,11 +13,22 @@ class LeaderBoard extends Component {
 
   userData = [
     {
-      rank: 1,
-      totalSecondsUsed: 123,
+      totalSecondsUsed: 125,
       coins: 120,
       picture: img,
-      name: 'Raju Gautam',
+      name: 'Rihan.sharma',
+    },
+    {
+      totalSecondsUsed: 125,
+      coins: 1210,
+      picture: img,
+      name: 'Pooja.bansal',
+    },
+    {
+      totalSecondsUsed: 13,
+      coins: 120,
+      picture: img,
+      name: 'haha.lol',
     },
   ];
 
@@ -26,7 +37,7 @@ class LeaderBoard extends Component {
   componentDidMount() {
     this.userData_1 = this.userData
       .sort(function(a, b) {
-        return a.totalSecondsUsed - b.totalSecondsUsed || b.coins - a.coins;
+        return a.totalSecondsUsed - b.totalSecondsUsed || a.coins - b.coins;
       })
       .reverse();
     this.setState({ updated: true });
@@ -57,7 +68,7 @@ class LeaderBoard extends Component {
                 className="rank-index-ql"
               >
                 <div>
-                  <p>{user.rank}</p>
+                  <p>{i+1}</p>
                 </div>
               </Grid.Column>
               <Grid.Column
@@ -82,7 +93,7 @@ class LeaderBoard extends Component {
                 only="table computer"
                 className="timer-ql"
               >
-                <img src={timerImg}  alt="img" />
+                <img src={timerImg} alt="img" />
                 {this.timeFormatter(user.totalSecondsUsed)}
               </Grid.Column>
             </Grid.Row>
