@@ -575,5 +575,5 @@ export {
   overGame,
   endGame,
   dontEndGame,
-  id
+  id,
 };
