@@ -13,7 +13,6 @@ import bg01 from '../../../assets/images/bg01.png';
 import bg02 from '../../../assets/images/bg02.png';
 import bg03 from '../../../assets/images/bg03.jpg';
 
-
 export default class PlayGame extends Phaser.Scene {
   // the game scene key is 'PlayGame'
   constructor() {
@@ -298,8 +297,7 @@ export default class PlayGame extends Phaser.Scene {
 
         const mod = document.querySelector('.showModal');
         const purchase = document.querySelector('.show-purchase');
-        const game = document.querySelector("#game");
-
+        const game = document.querySelector('#game');
 
         if (mod) {
           mod.style.setProperty('position', 'fixed', 'important');
@@ -318,7 +316,7 @@ export default class PlayGame extends Phaser.Scene {
         }
 
         if (!(fullscreenElement && fullscreenEnabled)) {
-          game.style.background = "none";
+          game.style.background = 'none';
           launchIntoFullscreen(document.getElementById('game'));
           this.counterSize = true;
         }
@@ -684,6 +682,12 @@ export default class PlayGame extends Phaser.Scene {
   }
 
   update() {
+    console.log({
+      currentcoin: this.currentCoin,
+      coins: this.coins,
+      currentGain: this.currentGain,
+      gain: this.gain,
+    });
     if (this.askingQuestion || this.fallOver) {
       this.mountainsBack.tilePositionX += 0;
       this.mountainsMid.tilePositionX += 0;

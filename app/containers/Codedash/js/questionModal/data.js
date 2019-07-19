@@ -306,12 +306,15 @@ const unlockHint = async () => {
 
     const coin = playScene.coins - 10;
     const cGain = playScene.currentGain - 10;
+    const gain = playScene.gain - 10;
+  
     if (coin < 0) {
       playScene.coins = 0;
       playScene.currentGain = 0;
     } else {
       playScene.coins = coin;
       playScene.currentGain = cGain;
+      playScene.gain = gain;
     }
     playScene.unlockHintCounter++;
     playScene.scoreText.setText(playScene.coins);
@@ -457,7 +460,6 @@ async function overGame() {
   playScene.music.stop();
   game.scene.stop('PlayGame');
   playScene.initialise('GameOver');
-  console.log(playScene.gain);
   game.scene.start('GameOver', {
     coins: playScene.coins,
     currentCoin: playScene.currentCoin,
@@ -470,9 +472,7 @@ async function overGame() {
 
 const answerIsTrue = async (playScene, coins, currentGain) => {
   const bonus = playScene.bonus1;
-  playScene.gain = currentGain + bonus;
-  console.log(playScene.gain);
-
+  playScene.gain = playScene.gain + bonus;
   if (playScene.coins >= 0) {
     playScene.coins = coins + bonus;
     playScene.currentGain = currentGain + bonus;
@@ -490,9 +490,7 @@ const answerIsTrue = async (playScene, coins, currentGain) => {
 };
 
 const answerIsFalse = async (playScene, coins, currentGain) => {
-  playScene.gain = currentGain - 10;
-  console.log(playScene.gain);
-
+  playScene.gain = playScene.gain - 10;
   if (playScene.coins > 0) {
     const bonus = -10;
     const coin = coins + bonus;
