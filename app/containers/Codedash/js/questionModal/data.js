@@ -11,6 +11,7 @@ let fillAnswerState = {};
 let questionData = null;
 let qInterval;
 let qTimeout;
+let id;
 
 const javascript = () => {
   jsLoader();
@@ -49,11 +50,9 @@ const showPurchaseModal = callback => {
   const currentCoinValue = document.querySelector('.coin_value');
   currentCoinValue.innerHTML = playScene.coins;
 
-  const id = setInterval(() => {
-    console.log(playScene.isPurchased);
+    id = setInterval(() => {
     if (playScene.isPurchased === 1) {
       clearInterval(id);
-      console.log('purchase true set interval');
       callback(1);
     }
     if (playScene.isPurchased === 2) {
@@ -65,8 +64,6 @@ const showPurchaseModal = callback => {
 
 const coinData = async bonus => {
   const modeScene = game.scene.getScene('ModeSelectScene');
-  const playScene = game.scene.getScene('PlayGame');
-
   const COIN_UPDATION_URL =
     'https://api-dev.campk12.live/protected/user/updateUserCoins';
   const COIN_DATA = {
@@ -86,11 +83,11 @@ const coinData = async bonus => {
 };
 
 const dontEndGame = () => {
-  console.log('inside dont end game');
   const playScene = game.scene.getScene('PlayGame');
   playScene.isPurchased = 1;
   playScene.coins -= 100;
   playScene.currentGain -= 100;
+  playScene.gain -= 100;
   document.querySelector('.purchase').classList.add('hide-purchase');
   const modal = document.querySelector('.show-purchase');
   modal ? (modal.style.display = 'none') : null;
@@ -578,4 +575,5 @@ export {
   overGame,
   endGame,
   dontEndGame,
+  id
 };

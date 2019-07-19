@@ -1,5 +1,6 @@
 import React from 'react';
 import CodeDashLodable from './loadable';
+import { id } from './js/questionModal/data';
 
 class CodeDash extends React.Component {
   componentWillMount() {
@@ -16,6 +17,8 @@ class CodeDash extends React.Component {
           });
         });
     }
+
+    clearInterval(id);
   }
 
   loadPhaser = async () => {
