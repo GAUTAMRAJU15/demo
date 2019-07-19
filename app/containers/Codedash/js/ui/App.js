@@ -27,10 +27,11 @@ class App extends React.Component {
       this.setState({ showGame: true });
     }
 
-
+    const containerWidth = document.querySelector('.content-container.body').offsetWidth;
+    const outputWidth = window.innerWidth < 1200 ? containerWidth - 50 : window.innerWidth - 570;
     const w = this.counter
       ? window.innerWidth
-      : (window.innerWidth - 570) * window.devicePixelRatio;
+      : outputWidth * window.devicePixelRatio;
     const h = this.counter ? window.innerHeight : 500;
     const canvas = document.querySelector('canvas');
 

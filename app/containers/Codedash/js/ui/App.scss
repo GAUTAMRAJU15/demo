@@ -4,18 +4,19 @@
   .banner-container {
     background-image: url('../../assets/dashheader.svg');
     background-size: cover;
-    height: 450px;
+    height: fit-content;
+    padding-bottom: 100px;
   }
 
   .content-container {
-    &.body{
+    &.body {
       position: relative;
       top: -150px;
     }
   }
 
   .codedash-header-container {
-    padding-top: 120px;
+    padding-top: 180px;
 
     .codedash-primary-header {
       display: flex;
@@ -58,9 +59,12 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      flex-wrap: wrap;
       position: relative;
-      top: 0px;
+      top: 30px;
       .game {
+        margin: 0 auto;
+        text-align: center;
       }
     }
   }
@@ -113,37 +117,44 @@
   }
 }
 
-
 @media screen and (max-width: 530px) {
   .content-container,
   .navbar .main-menu,
   .codedash-primary-header {
     padding: 0 16px;
   }
+  .primary-head-2 {
+    img {
+      width: 120px !important;
+    }
+  }
 }
 
 @media screen and (max-width: 1200px) {
-  .leaderboard {
-    display: none;
-  }
   .secondary-head {
-      max-width: 410px !important;
+    max-width: 410px !important;
   }
   .codedash-body {
     margin: 0 auto;
     width: 70%;
   }
+  .codedash-game-container {
+    justify-content: center !important;
+  }
 }
 
 @media screen and (max-width: 992px) {
-    .content-container,
-    .navbar .main-menu {
-      padding: 0 48px;
-    }
+  .content-container,
+  .navbar .main-menu {
+    padding: 0 48px;
+  }
 
-    .codedash-container {
-        height: 550px;
-    }
+  .leaderboard {
+    display: none;
+  }
+  .codedash-container {
+    height: 550px;
+  }
   .codedash-primary-header {
     flex-direction: column-reverse;
     position: relative;
@@ -151,16 +162,21 @@
     .primary-head-1 {
       text-align: center;
       .code-head {
+        font-size: 25px !important;
+        text-align: center !important;
         margin: 20px auto !important;
       }
     }
     .primary-head-2 {
       right: 0px !important;
+      img {
+        width: 150px;
+      }
     }
     .secondary-head {
-        max-width: 590px !important;
-        text-align: center !important;
-        margin: 0 auto;
+      max-width: 590px !important;
+      text-align: center !important;
+      margin: 0 auto;
     }
   }
   .codedash-body {
@@ -169,25 +185,26 @@
   }
 }
 
-
-@media screen and (max-width:700px) {
-    .primary-head-2 {
-        width: 150px;
-        margin: 0 auto;
-        img {
-            width: 150px;
-        }
+@media screen and (max-width: 700px) {
+  .primary-head-2 {
+    width: 150px;
+    margin: 0 auto;
+    img {
+      width: 150px;
     }
+  }
 
-    .code-head {
-        font-size: 25px !important;
-        text-align: center !important;
-        padding: 5px 5px !important;
-        max-width: 200px !important;
-    }
+  .code-head {
+    font-size: 25px !important;
+    text-align: center !important;
+    padding: 5px 5px !important;
+    max-width: 200px !important;
+  }
 
-    .secondary-head {
-        font-size: 16px !important;
-        max-width: 300px !important;
-    }
+  .secondary-head {
+    font-size: 16px !important;
+    max-width: 300px !important;
+  }
 }
+
+

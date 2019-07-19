@@ -13,39 +13,6 @@ import bg01 from '../../../assets/images/bg01.png';
 import bg02 from '../../../assets/images/bg02.png';
 import bg03 from '../../../assets/images/bg03.jpg';
 
-document.addEventListener('fullscreenchange', exitHandler);
-document.addEventListener('webkitfullscreenchange', exitHandler);
-document.addEventListener('mozfullscreenchange', exitHandler);
-document.addEventListener('MSFullscreenChange', exitHandler);
-
-function exitHandler() {
-  if (
-    !document.fullscreenElement &&
-    !document.webkitIsFullScreen &&
-    !document.mozFullScreen &&
-    !document.msFullscreenElement
-  ) {
-    const mod = document.querySelector('.showModal');
-    const purchase = document.querySelector('.show-purchase');
-    const game = document.querySelector("#game");
-    game.style.background = "#fff";
-    this.counterSize = false;
-    if (mod) {
-      mod.style.setProperty('position', 'absolute', 'important');
-      mod.style.width = '630px';
-      mod.style.height = '350px';
-      mod.style.top = '160px';
-      mod.style.left = '38%';
-      mod.style.marginTop = '40px';
-      mod.style.marginLeft = '12%';
-    }
-
-    if (purchase) {
-      purchase.style.top = '170px';
-      purchase.style.left = '38%';
-    }
-  }
-}
 
 export default class PlayGame extends Phaser.Scene {
   // the game scene key is 'PlayGame'

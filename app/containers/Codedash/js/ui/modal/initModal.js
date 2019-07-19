@@ -33,7 +33,9 @@ class InitModal extends React.Component {
             <option value="html">HTML5</option>
             <option value="css">CSS</option>
           </select>
+          <div className="gamestart-full">Press 'SHIFT' for FullScreen</div>
           <div className="gamestart-btn">Press 'Space bar' to start</div>
+
         </div>
       </div>
     );

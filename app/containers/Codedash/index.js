@@ -3,11 +3,7 @@ import CodeDashLodable from './loadable';
 
 class CodeDash extends React.Component {
   componentWillMount() {
-    if (window.Phaser) {
-      this.setState({
-        phaserLoaded: true,
-      });
-    } else {
+    if (!window.Phaser) {
       this.loadPhaser()
         .then(() => {
           this.setState({
@@ -39,7 +35,7 @@ class CodeDash extends React.Component {
   };
 
   state = {
-    phaserLoaded: false,
+    phaserLoaded: window.Phaser ? true : false,
   };
 
   render() {

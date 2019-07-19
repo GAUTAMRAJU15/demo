@@ -1,6 +1,44 @@
+/* eslint-disable func-names */
+/* eslint-disable no-shadow */
 import { MODE_SCENE_KEY } from '../../constants/sceneKeys';
 import { game } from '../../invader';
 import Sky from '../../../assets/images/sky1.png';
+
+document.addEventListener('fullscreenchange', exitHandler);
+document.addEventListener('webkitfullscreenchange', exitHandler);
+document.addEventListener('mozfullscreenchange', exitHandler);
+document.addEventListener('MSFullscreenChange', exitHandler);
+
+function exitHandler() {
+  if (
+    !document.fullscreenElement &&
+    !document.webkitIsFullScreen &&
+    !document.mozFullScreen &&
+    !document.msFullscreenElement
+  ) {
+    const mod = document.querySelector('.showModal');
+    const purchase = document.querySelector('.show-purchase');
+    const game = document.querySelector("#game");
+    const shiftshow = document.querySelector('.gamestart-full');
+    shiftshow.style.display = 'block';
+    game.style.background = "#fff";
+    this.counterSize = false;
+    if (mod) {
+      mod.style.setProperty('position', 'absolute', 'important');
+      mod.style.width = '630px';
+      mod.style.height = '350px';
+      mod.style.top = '160px';
+      mod.style.left = '38%';
+      mod.style.marginTop = '40px';
+      mod.style.marginLeft = '12%';
+    }
+
+    if (purchase) {
+      purchase.style.top = '170px';
+      purchase.style.left = '38%';
+    }
+  }
+}
 
 export default class ModeSelectScene extends Phaser.Scene {
   mode = null;
@@ -93,7 +131,9 @@ export default class ModeSelectScene extends Phaser.Scene {
 
         const mod = document.querySelector('.showModal');
         const purchase = document.querySelector('.show-purchase');
-        const game = document.querySelector("#game");
+        const game = document.querySelector('#game');
+        const shiftshow = document.querySelector('.gamestart-full');
+        shiftshow.style.display = 'none';
         if (mod) {
           mod.style.setProperty('position', 'fixed', 'important');
           mod.style.width = '710px';
@@ -111,7 +151,7 @@ export default class ModeSelectScene extends Phaser.Scene {
         }
 
         if (!(fullscreenElement && fullscreenEnabled)) {
-        game.style.background = "none";
+          game.style.background = 'none';
           launchIntoFullscreen(document.getElementById('game'));
         }
       },
