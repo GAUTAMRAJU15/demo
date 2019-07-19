@@ -11,7 +11,6 @@ let fillAnswerState = {};
 let questionData = null;
 let qInterval;
 let qTimeout;
-let id;
 
 const javascript = () => {
   jsLoader();
@@ -50,7 +49,7 @@ const showPurchaseModal = callback => {
   const currentCoinValue = document.querySelector('.coin_value');
   currentCoinValue.innerHTML = playScene.coins;
 
-    id = setInterval(() => {
+  const id = setInterval(() => {
     if (playScene.isPurchased === 1) {
       clearInterval(id);
       callback(1);
@@ -575,5 +574,4 @@ export {
   overGame,
   endGame,
   dontEndGame,
-  id,
 };

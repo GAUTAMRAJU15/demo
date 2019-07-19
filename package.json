@@ -84,6 +84,8 @@
     "sanitize.css": "8.0.0",
     "sass-loader": "^7.1.0",
     "scriptjs": "^2.5.9",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.87.3",
     "styled-components": "4.2.0"
   },
   "devDependencies": {
